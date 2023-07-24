@@ -18,7 +18,6 @@ class Saver(ABC):
 
 
 class JsonSaver(Saver):
-
     @classmethod
     def save_to_file(cls, vacancies: list) -> None:
         save_list = []
