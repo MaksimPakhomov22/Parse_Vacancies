@@ -28,7 +28,7 @@ class JsonSaver(Saver):
 
     @classmethod
     def read_from_file(cls) -> list:
-        with open('vacancies.json', 'r') as file:
+        with open('vacancies.json', 'r', encoding='utf-8') as file:
             text = json.load(file)
             return text
 

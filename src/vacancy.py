@@ -75,7 +75,7 @@ class Vacancy(JsonSaver):
         return f"{self.name}\n{self.city}\n{self.creation_salary_string()}\n" \
                f"Требования: {self.requirement}\n" \
                f"Дата и время размещения: {self.date_time.strftime('%d.%m.%Y %H:%M:%S')}\n" \
-               f"URL: {self.url}"
+               f"URL: {self.url}\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 
     @classmethod
     def get_vacancies_by_salary_from(cls, vacancies: list, salary_from: int) -> list:
