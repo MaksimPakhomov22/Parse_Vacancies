@@ -1,11 +1,21 @@
-from src.job_site import JobSite
+from abc import ABC, abstractmethod
 import requests
 from src.vacancy import Vacancy
 from datetime import datetime
 
 
+class JobSite(ABC):
+
+    @abstractmethod
+    def get_vacancies_list(self):
+        pass
+
+    @abstractmethod
+    def creation_objects(self, response):
+        pass
+
+
 class HeadHunter(JobSite):
-    """Класс для работы с платформой HeadHunter"""
 
     def __init__(self, params):
         self.url = "https://api.hh.ru/vacancies"
@@ -13,10 +23,6 @@ class HeadHunter(JobSite):
         self.vacancies_list = []
 
     def get_vacancies_list(self) -> list:
-        """
-        Получает вакансии по API
-        :return: список вакансий в формате json
-        """
         while self.params['page'] > 0:
             response = requests.get(self.url, params=self.params).json()['items']
             for vacancy in response:
@@ -27,11 +33,6 @@ class HeadHunter(JobSite):
 
     @classmethod
     def creation_objects(cls, vacancies: list) -> list:
-        """
-        Преобразует список вакансий полученный по API в список объектов класса Vacancy
-        :param vacancies: список вакансий в формате json
-        :return: список объектов класса Vacancy
-        """
         objects_vacancy = []
         for vacancy in vacancies:
             all_data = vacancy

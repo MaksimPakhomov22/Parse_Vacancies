@@ -2,14 +2,11 @@ from src.vacancy import Vacancy
 from src.utils import get_vacancies_by_api, get_vacancies_from_file, get_vacancies_by_salary, printing_vacancies,\
     creation_salary_dict
 
-# Получение вакансий по API и запись в json-файл
 get_vacancies_by_api()
 
-# Получение данных из файла и вывод в консоль
 vacancies = get_vacancies_from_file()
 printing_vacancies(vacancies)
 
-# Цикл взаимодействия с пользователем
 request = None
 while True:
     user_answer = input("\nВыберите действие со списком:\n"
@@ -56,5 +53,4 @@ while True:
             printing_vacancies(vacancies)
         elif request == 8:
             Vacancy.clear_file()
-            print("\nФайл очищен\n###########")
-
+            print("\nФайл очищен")
